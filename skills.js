@@ -1,0 +1,1 @@
+const skills=[['HTML',90],['CSS',90],['JavaScript',90],['TypeScript',90],['Python',90],['Next.js',90],['API Integration',90],['Git',90],['GitHub',90],['Workflow Automation',90],['AI Development',90],['Prompt Engineering',90],['Problem Solving',90],['n8n',90],['Zapier',90]];
