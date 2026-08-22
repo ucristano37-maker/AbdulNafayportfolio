@@ -20,6 +20,96 @@ function startTypewriter(){
 const header=$('#siteHeader');
 window.addEventListener('scroll',()=>{header.classList.toggle('show',window.scrollY>window.innerHeight*0.5);});
 
+/* ============== HERO STATS ============== */
+(function(){
+  const stats=$$('.stats div');
+  const values=[['4+','Years Coding'],['100+','Projects Built'],['100+','Automations'],['100%','Passion']];
+  stats.forEach((el,i)=>{
+    if(values[i]){
+      el.querySelector('b').textContent=values[i][0];
+      el.querySelector('small').textContent=values[i][1];
+    }
+  });
+})();
+
+/* ============== ABOUT SKILLS MARQUEE ============== */
+(function(){
+  const about=document.querySelector('#about');
+  if(!about)return;
+  const marquee=document.createElement('div');
+  marquee.className='about-skills-marquee';
+  const track=document.createElement('div');
+  track.className='about-skills-track';
+  const names=skills.map(([name])=>name);
+  const items=[...names,...names];
+  track.innerHTML=items.map(name=>`<span class="about-skill-item">${name}</span>`).join('');
+  marquee.appendChild(track);
+  about.insertAdjacentElement('afterend',marquee);
+
+  const style=document.createElement('style');
+  style.textContent=`
+    .about-skills-marquee{
+      position:relative;
+      z-index:2;
+      width:100%;
+      overflow:hidden;
+      padding:22px 0;
+      border-top:1px solid rgba(255,255,255,.06);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      background:rgba(7,10,18,.55);
+    }
+    .about-skills-track{
+      display:flex;
+      width:max-content;
+      gap:14px;
+      padding-left:14px;
+      animation:aboutSkillsMove 32s linear infinite;
+      will-change:transform;
+    }
+    .about-skill-item{
+      display:inline-flex;
+      align-items:center;
+      white-space:nowrap;
+      padding:9px 17px;
+      border:1px solid rgba(255,255,255,.09);
+      border-radius:999px;
+      background:rgba(255,255,255,.035);
+      color:var(--text-dim);
+      font-family:var(--font-display);
+      font-size:.82rem;
+      transition:color .2s,border-color .2s,background .2s;
+      cursor:default;
+    }
+    .about-skill-item::before{
+      content:'✦';
+      color:var(--accent2);
+      margin-right:8px;
+      font-size:.7rem;
+    }
+    .about-skill-item:hover{
+      color:var(--text);
+      border-color:rgba(34,211,238,.45);
+      background:rgba(34,211,238,.08);
+    }
+    .about-skills-marquee:hover .about-skills-track{
+      animation-play-state:paused;
+    }
+    @keyframes aboutSkillsMove{
+      from{transform:translateX(0)}
+      to{transform:translateX(calc(-50% - 7px))}
+    }
+    @media(max-width:720px){
+      .about-skills-marquee{padding:18px 0}
+      .about-skills-track{gap:10px;animation-duration:26s}
+      .about-skill-item{font-size:.76rem;padding:8px 14px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .about-skills-track{animation:none}
+    }
+  `;
+  document.head.appendChild(style);
+})();
+
 /* ============== SKILLS ============== */
 let skillCount=10;
 function renderSkills(){
