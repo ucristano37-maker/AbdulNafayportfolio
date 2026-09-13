@@ -90,34 +90,22 @@ const certificates=[
     img:'cert13.jpg',
     desc:'A complete course on building no-code AI agents in n8n, covering agent design, tool use, and deployment end to end.'
   },
+  {
+    title:'Gemini in Google Drive',
+    org:'Google Cloud',
+    date:'September 13, 2026',
+    img:'cert13.svg',
+    desc:'Completed the Gemini in Google Drive online course, focused on using Gemini features in Google Drive to work more efficiently with files and everyday productivity workflows.'
+  },
 ];
 
 /* ============== CERTIFICATE FULL-SIZE IMAGE FIX ============== */
 (function(){
   const style=document.createElement('style');
   style.textContent=`
-    #certModal .modal-box{
-      max-width:min(1100px,96vw);
-      width:auto;
-      max-height:94vh;
-      overflow:auto;
-    }
-    #certModal #certModalImg{
-      width:auto;
-      height:auto;
-      max-width:100%;
-      max-height:72vh;
-      object-fit:contain;
-      margin:0 auto;
-      background:#0d1220;
-      border-radius:var(--radius) var(--radius) 0 0;
-    }
-    @media (max-width:640px){
-      #certModal{padding:10px}
-      #certModal .modal-box{max-width:98vw;max-height:96vh}
-      #certModal #certModalImg{max-height:68vh}
-      #certModal .modal-content{padding:20px}
-    }
+    #certModal .modal-box{max-width:min(1100px,96vw);width:auto;max-height:94vh;overflow:auto}
+    #certModal #certModalImg{width:auto;height:auto;max-width:100%;max-height:72vh;object-fit:contain;margin:0 auto;background:#0d1220;border-radius:var(--radius) var(--radius) 0 0}
+    @media (max-width:640px){#certModal{padding:10px}#certModal .modal-box{max-width:98vw;max-height:96vh}#certModal #certModalImg{max-height:68vh}#certModal .modal-content{padding:20px}}
   `;
   document.head.appendChild(style);
 })();
